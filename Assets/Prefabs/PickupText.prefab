@@ -87,7 +87,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5663329303009429896}
-  m_Text: press "f" to pick up
+  m_Text: press "f" to pick up, "0" or "1" to link
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1

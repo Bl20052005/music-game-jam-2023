@@ -9,6 +9,7 @@ public class PickUpObject : MonoBehaviour
     public GameObject player;
     private bool hasEntered = false;
     private bool isMoving = false;
+    private Vector3 startingVector = Vector3.zero;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,17 +25,22 @@ public class PickUpObject : MonoBehaviour
             {
                 text.GetComponent<TextMesh>().text = "press \"f\" to drop";
                 isMoving = true;
+                startingVector = player.transform.position - transform.position;
             } else if(text && isMoving)
             {
-                text.GetComponent<TextMesh>().text = "press \"f\" to pick up";
+                text.GetComponent<TextMesh>().text = "press \"f\" to pick up, \"0\" or \"1\" to link";
+                Vector3 temp = new(-1.5f, -0.8f, 0);
+                text.transform.position = gameObject.transform.position + temp;
                 isMoving = false;
+                startingVector = Vector3.zero;
             }
             //gameObject.transform.position += player.transform.position;
         }
 
-        if(isMoving)
+        if(isMoving && startingVector != Vector3.zero)
         {
-            gameObject.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 2 * Time.deltaTime);
+            //gameObject.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 2 * Time.deltaTime);
+            gameObject.transform.position = player.transform.position - startingVector;
             Vector3 temp = transform.position - text.transform.position + new Vector3(-0.8f, -0.8f, 0);
             text.transform.position += temp;
         }
@@ -45,7 +51,7 @@ public class PickUpObject : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             text = Instantiate(pickupText, transform.position, Quaternion.identity);
-            Vector3 temp = new(-0.8f, -0.8f, 0);
+            Vector3 temp = new(-1.5f, -0.8f, 0);
             text.transform.position += temp;
             hasEntered = true;
         }
