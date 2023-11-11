@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PastScene.unity
     guid: dfb32212b5a47e24da50f7135d3aa15c
+  - enabled: 1
+    path: Assets/Scenes/Puzzle.unity
+    guid: 9ea95e4f38a164501987c884239550a3
   m_configObjects: {}

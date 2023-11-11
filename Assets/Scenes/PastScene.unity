@@ -238,7 +238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6413189712472096622, guid: 1a4a4a99075874b43a34f86813b8ffb2, type: 3}
       propertyPath: levelToLoad
-      value: PresentScene
+      value: Puzzle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
