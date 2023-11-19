@@ -2,23 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Inventory : MonoBehaviour
+public class Door : MonoBehaviour
 {
-    public List<string> inventory = new List<string>();
+    public string requiredItem;
+    public Inventory inventory;
 
-    public void addItem(string item)
+    // Start is called before the first frame update
+    void Start()
     {
-        inventory.Add(item);
+        // Any initialization logic can be added here if needed
     }
 
-    public bool contains(string item)
+    // Update is called once per frame
+    void Update()
     {
-        if (inventory.Contains(item))
-        {
-            return true;
-        }
+        // Any per-frame logic can be added here if needed
+    }
 
-        return false;
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        CheckAndOpenDoor();
+    }
+
+    private void CheckAndOpenDoor()
+    {
+        if (inventory != null && inventory.Contains(requiredItem))
+        {
+            OpenDoor();
+        }
+    }
+
+    private void OpenDoor()
+    {
+        Destroy(gameObject);
     }
 }
